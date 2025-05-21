@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging
+  namespace: argocd  # ← waar Argo CD draait (moet bestaan)
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: staging
+  source:
+    repoURL: git@github.com:rverspaij/ArgoCD-Test.git
+    path: staging
+    targetRevision: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging   # ← waar je app naartoe gaa
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

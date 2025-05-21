@@ -1,0 +1,14 @@
+configs:
+  params:
+    server.insecure: true
+  
+  repositories:
+    private-repo:
+      url: ${repo_url}
+      type: git
+      sshPrivateKey: |
+        ${indent(8, ssh_private_key)}
+
+server:
+  ingress:
+    enabled: false

@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-events
+  namespace: argocd
+spec:
+  project: argo-events
+  source:
+    repoURL: https://github.com/argoproj/argo-helm.git
+    targetRevision: main
+    path: charts/argo-events
+    helm:
+      releaseName: argo-events
+      values: |
+        eventbus:
+          enabled: true
+        sensor:
+          enabled: true
+        eventsource:
+          enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-events
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

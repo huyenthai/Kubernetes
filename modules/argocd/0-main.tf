@@ -23,7 +23,7 @@ resource "helm_release" "argocd" {
   values = [
     templatefile("${path.module}/3-values.yaml", {
       repo_url        = var.repo_url
-      ssh_private_key = file("${path.module}/argocd_gitops_key")
+      ssh_private_key = file("${path.module}/my-ssh-key")
     })
   ]
 
@@ -38,6 +38,6 @@ resource "kubectl_manifest" "argocd_ingress" {
 output "rendered_yaml" {
   value = templatefile("${path.module}/3-values.yaml", {
     repo_url        = var.repo_url
-    ssh_private_key = indent(8, file("${path.module}/argocd_gitops_key"))
+    ssh_private_key = indent(8, file("${path.module}/my-ssh-key"))
   })
 }

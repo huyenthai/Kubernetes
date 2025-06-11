@@ -13,5 +13,5 @@ variable "chart_version" {
 variable "repo_url" {
   type = string
   description = "The URL of the github repo to look at."
-  default = "git@github.com:rverspaij/ArgoCD-Test.git"
+  default = "git@github.com:huyenthai/ArgoCD-Setup.git"
 }

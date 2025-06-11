@@ -10,6 +10,6 @@ argocd_namespace       = "argocd"
 argocd_chart_version   = "5.46.7"
 
 bootstrap_app_name     = "bootstrap-aks"
-bootstrap_repo_url     = "git@github.com:rverspaij/ArgoCD-Test.git"
+bootstrap_repo_url     = "git@github.com:huyenthai/ArgoCD-Setup.git"
 bootstrap_repo_path    = "apps/hello-world"
 app_namespace = "app"

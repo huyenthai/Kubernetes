@@ -1,22 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: production
-  namespace: argocd  # ← waar Argo CD draait (moet bestaan)
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  name: microservices-root
+  namespace: argocd
 spec:
-  project: production
+  project: default
   source:
-    repoURL: git@github.com:rverspaij/ArgoCD-Test.git
-    path: production
-    targetRevision: dev
+    repoURL: git@github.com:huyenthai/ArgoCD-Setup.git
+    targetRevision: HEAD
+    path: apps
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: production   # ← waar je app naartoe gaa
+    namespace: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

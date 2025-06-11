@@ -8,6 +8,12 @@ module "aks" {
     node_count = var.node_count
     vm_size = var.vm_size
 }
+
+module "ingress" {
+  source = "./modules/nginx"
+}
+
+
 module "argocd" {
     source = "./modules/argocd"
     providers = {
@@ -18,9 +24,7 @@ module "argocd" {
     depends_on = [ module.aks ]
 }
 
-module "ingress" {
-  source = "./modules/nginx"
-}
+
 
 
 module "argocd_app" {

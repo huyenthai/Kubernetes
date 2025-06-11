@@ -1,0 +1,15 @@
+# Ignore any SSH key files
+*.pem
+*.key
+*.pub
+argocd-key
+modules/argocd/my-ssh-key
+.terraform/
+*.tfstate
+.tfstate.
+*.tfstate.backup
+.tfvars
+crash.log
+terraform.tfstate
+terraform.tfstate.backup
+argocd_gitops_key

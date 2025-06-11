@@ -75,7 +75,7 @@ variable "bootstrap_repo_revision" {
 variable "subscription_id" {
     type = string
     description = "The subscription ID on which to apply the resources"
-    default = "365392ff-b101-4c74-a710-17152ad08a96"
+    default = "acc3f465-98ee-490d-a50e-ed52443d2799"
 }
 
 variable "app_namespace" {
